@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour {
 
     public float moveForce = 150f;
     public float maxSpeed = 2f;
-    public float jumpForce = 10f;
+    public float jumpForce = 120;
     public Transform groundCheck;
 
     private bool grounded = false; // jumping works when a ground collision can be detected
