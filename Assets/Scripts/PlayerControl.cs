@@ -9,10 +9,10 @@ public class PlayerControl : MonoBehaviour {
 
     public float moveForce = 150f;
     public float maxSpeed = 2f;
-    public float jumpForce = 1000f;
+    public float jumpForce = 10f;
     public Transform groundCheck;
 
-    private bool grounded = false;
+    private bool grounded = false; // jumping works when a ground collision can be detected
     private Animator anim;
     private Rigidbody2D rb2d;
 
@@ -26,9 +26,10 @@ public class PlayerControl : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+        // ground detection is only working with objects labeled Default, it should be used with Ground layer for any future prefabs for building the ground
+        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Default"));
 
-        if (Input.GetButtonDown("Jump") && grounded == true) // jumping is currently not working
+        if (Input.GetButtonDown("Jump") && grounded == true) 
         {
             jump = true; // jump if the jump button is pressed and the character isn't grounded
         }
