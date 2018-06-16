@@ -26,8 +26,8 @@ public class PlayerControl : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        // ground detection is only working with objects labeled Default, it should be used with Ground layer for any future prefabs for building the ground
-        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Default"));
+        // ground detection works when the ground tranform object attached to the player is stuck in an object in the ground layer
+        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
         if (Input.GetButtonDown("Jump") && grounded == true) 
         {

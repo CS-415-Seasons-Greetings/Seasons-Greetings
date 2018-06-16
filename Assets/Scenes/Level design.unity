@@ -195,7 +195,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 364627324}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.88, y: -2.88, z: 0}
+  m_LocalPosition: {x: 10.56, y: -2.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 615623355}
@@ -375,6 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05012290f6eb6104ba04aa3415320859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facingRight: 1
   speed: 2
 --- !u!50 &567890208
 Rigidbody2D:
@@ -589,7 +590,7 @@ GameObject:
   - component: {fileID: 615623361}
   - component: {fileID: 615623359}
   - component: {fileID: 615623362}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: platforms & boundaries
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1506,6 +1507,14 @@ Prefab:
       propertyPath: m_Mass
       value: 0.39536002
       objectReference: {fileID: 0}
+    - target: {fileID: 4462535208988090, guid: 9112ad1ca3791494e8e6d206acb8f952, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.2376
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462535208988090, guid: 9112ad1ca3791494e8e6d206acb8f952, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.027
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9112ad1ca3791494e8e6d206acb8f952, type: 2}
   m_IsPrefabParent: 0
@@ -2183,7 +2192,7 @@ GameObject:
   - component: {fileID: 1473951637}
   - component: {fileID: 1473951636}
   - component: {fileID: 1473951635}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: stonefloor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2267,7 +2276,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1473951634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.38, y: -1.68, z: 0}
+  m_LocalPosition: {x: 4.452, y: -1.378, z: 0}
   m_LocalScale: {x: 1.1027226, y: 0.465843, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2283,7 +2292,7 @@ GameObject:
   - component: {fileID: 1981443286}
   - component: {fileID: 1981443285}
   - component: {fileID: 1981443284}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: stonefloor (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2367,7 +2376,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1981443283}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.226, y: -1.099, z: 0}
+  m_LocalPosition: {x: 6.111, y: -0.847, z: 0}
   m_LocalScale: {x: 1.0821784, y: 0.46584284, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
