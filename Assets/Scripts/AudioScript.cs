@@ -7,10 +7,11 @@ public class AudioScript : MonoBehaviour {
     public AudioClip JumpSound;
     //public AudioClip SnowLanding;
     public AudioSource JumpSource;
-   // public AudioSource SnowLandingSource;
 
-	// Use this for initialization
-	void Start () {
+    // public AudioSource SnowLandingSource;
+
+    // Use this for initialization
+    void Start () {
         JumpSource.clip = JumpSound;
       //  SnowLandingSource.clip = SnowLanding;
 	}
