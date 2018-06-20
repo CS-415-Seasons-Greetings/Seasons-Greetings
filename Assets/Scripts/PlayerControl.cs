@@ -11,6 +11,8 @@ public class PlayerControl : MonoBehaviour {
     public float maxSpeed = 2f;
     public float jumpForce = 120;
     public Transform groundCheck;
+    public AudioClip JumpSound;
+    public AudioSource PlayerSource;
 
     private bool grounded = false; // jumping works when a ground collision can be detected
     private Animator anim;
@@ -65,10 +67,17 @@ public class PlayerControl : MonoBehaviour {
 
         if (jump)
         {
+            PlayJumpSound();
             anim.SetTrigger("Jump");
             rb2d.AddForce(new Vector2(0f, jumpForce)); // add jump force to the sprite
             jump = false;
         }
+    }
+
+    void PlayJumpSound()
+    {
+        PlayerSource.clip = JumpSound;
+        PlayerSource.Play();
     }
 
     void Flip()
