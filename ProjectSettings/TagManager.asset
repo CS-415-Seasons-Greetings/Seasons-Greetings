@@ -7,6 +7,7 @@ TagManager:
   - DeathTouch
   - Ground
   - Enemy
+  - Spikes
   layers:
   - Default
   - TransparentFX
