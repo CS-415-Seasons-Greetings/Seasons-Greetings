@@ -1,7 +1,9 @@
 fileFormatVersion: 2
-guid: 7182ee0e17b56ab458f84d9a55e7c3ff
+guid: 43ff0a633fe2cf747a1827060d42ecac
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: cloud-sprite_0
+    21300002: cloud-sprite_1
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -80,11 +82,51 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: cloud-sprite_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 191
+        width: 170
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae46071f4a2e4c546853259c5c3b18e3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cloud-sprite_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 170
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 832bd6d1f8f6a0a44a8600dc14585b85
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 089c8bafd3050be44ac033d5f9824d47
+    spriteID: f2503a91de4fe164289af78a977ae4ba
     vertices: []
     indices: 
     edges: []
