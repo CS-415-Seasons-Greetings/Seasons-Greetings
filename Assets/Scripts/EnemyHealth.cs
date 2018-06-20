@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour {
 
     public int health;
     public int maxHealth;
+    public Transform locationCheck;
 
     void Start()
     {
@@ -14,12 +15,10 @@ public class EnemyHealth : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if(gameObject.transform.position.y < -7)
+        if (locationCheck.position.y < -7)
         {
             Destroy(gameObject);
         }
-
-
 	}
 
     public void TakeDamage(int amount)

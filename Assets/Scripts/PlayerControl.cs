@@ -13,8 +13,8 @@ public class PlayerControl : MonoBehaviour {
     public Transform groundCheck;
     public AudioClip JumpSound;
     public AudioSource PlayerSource;
+    public bool grounded = false; // jumping works when a ground collision can be detected
 
-    private bool grounded = false; // jumping works when a ground collision can be detected
     private Animator anim;
     private Rigidbody2D rb2d;
 

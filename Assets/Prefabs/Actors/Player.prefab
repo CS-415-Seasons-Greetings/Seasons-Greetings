@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasDied: 0
-  health: 0
+  health: 10000000
 --- !u!114 &114908505150096662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -424,6 +424,7 @@ MonoBehaviour:
   groundCheck: {fileID: 4462535208988090}
   JumpSound: {fileID: 8300000, guid: 6b6e2926015cc3f48b8cc7aed57b0873, type: 3}
   PlayerSource: {fileID: 82933043427175454}
+  grounded: 0
 --- !u!124 &124143948344458744
 Behaviour:
   m_ObjectHideFlags: 1
