@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 114908505150096662}
   - component: {fileID: 95929706920748998}
   - component: {fileID: 114436185206185584}
-  - component: {fileID: 114210529160464414}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -393,19 +392,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114210529160464414
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320231550414302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13983027fe5fdf144bd9f47e9164e39f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JumpSound: {fileID: 8300000, guid: 6b6e2926015cc3f48b8cc7aed57b0873, type: 3}
-  JumpSource: {fileID: 82933043427175454}
 --- !u!114 &114436185206185584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -436,6 +422,8 @@ MonoBehaviour:
   maxSpeed: 2
   jumpForce: 150
   groundCheck: {fileID: 4462535208988090}
+  JumpSound: {fileID: 8300000, guid: 6b6e2926015cc3f48b8cc7aed57b0873, type: 3}
+  PlayerSource: {fileID: 82933043427175454}
 --- !u!124 &124143948344458744
 Behaviour:
   m_ObjectHideFlags: 1
