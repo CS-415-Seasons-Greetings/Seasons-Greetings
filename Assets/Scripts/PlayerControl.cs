@@ -31,7 +31,7 @@ public class PlayerControl : MonoBehaviour {
         // ground detection works when the ground tranform object attached to the player is stuck in an object in the ground layer
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
-        if (Input.GetButtonDown("Jump") && grounded == true) 
+        if (Input.GetKeyDown("space") && grounded == true) 
         {
             jump = true; // jump if the jump button is pressed and the character isn't grounded
         }
