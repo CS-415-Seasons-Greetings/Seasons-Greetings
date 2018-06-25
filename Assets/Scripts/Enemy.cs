@@ -33,7 +33,6 @@ public class Enemy : MonoBehaviour
             dirRight = true;
             Flip();
         }
-
     }
 
     void Flip()
@@ -43,11 +42,5 @@ public class Enemy : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        other.GetComponent<Rigidbody2D>().AddForce(new Vector2(100000000, 100000000000));
-        knockedBack = true;
     }
 }

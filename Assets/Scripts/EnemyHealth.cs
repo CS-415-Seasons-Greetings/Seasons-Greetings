@@ -8,11 +8,6 @@ public class EnemyHealth : MonoBehaviour {
     public int maxHealth;
     public Transform locationCheck;
 
-    void Start()
-    {
-        health = 1;    
-    }
-
     // Update is called once per frame
     void Update () {
         if (locationCheck.position.y < -7)
@@ -29,5 +24,16 @@ public class EnemyHealth : MonoBehaviour {
             Destroy(gameObject);
         }
 
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        /*
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag.Equals("Player") && GetComponent<PlayerControl>().isAttacking)
+        {
+            TakeDamage(1);
+        }
+        */
     }
 }

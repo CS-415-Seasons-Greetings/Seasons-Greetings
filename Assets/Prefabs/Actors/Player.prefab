@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114436185206185584}
   - component: {fileID: 58937155619424400}
   - component: {fileID: 212295464625824626}
+  - component: {fileID: 61485257854611110}
   m_Layer: 13
   m_Name: Player
   m_TagString: Player
@@ -129,7 +130,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1320231550414302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8, y: -2.04, z: 0}
+  m_LocalPosition: {x: -2.783, y: -2.04, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4494017958111524}
@@ -189,7 +190,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.37781596
+  m_Mass: 0.51781595
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -213,6 +214,31 @@ CircleCollider2D:
   m_Offset: {x: -0.025, y: -0.1755}
   serializedVersion: 2
   m_Radius: 0.05
+--- !u!61 &61485257854611110
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320231550414302}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.1, y: -0.03}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.22, y: 0.45}
+    newSize: {x: 0.22, y: 0.45}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.35}
+  m_EdgeRadius: 0
 --- !u!61 &61648464582296692
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -409,6 +435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 1
   jump: 0
+  isAttacking: 0
   moveForce: 150
   maxSpeed: 2
   jumpForce: 150
@@ -416,6 +443,7 @@ MonoBehaviour:
   JumpSound: {fileID: 8300000, guid: 6b6e2926015cc3f48b8cc7aed57b0873, type: 3}
   PlayerSource: {fileID: 82933043427175454}
   grounded: 0
+  attackHitbox: {fileID: 61485257854611110}
 --- !u!124 &124143948344458744
 Behaviour:
   m_ObjectHideFlags: 1

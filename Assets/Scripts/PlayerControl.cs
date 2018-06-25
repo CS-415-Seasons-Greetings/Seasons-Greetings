@@ -6,6 +6,7 @@ public class PlayerControl : MonoBehaviour {
 
     [HideInInspector] public bool facingRight = true;
     [HideInInspector] public bool jump = false;
+    /*[HideInInspector]*/ public bool isAttacking = false;
 
     public float moveForce = 150f;
     public float maxSpeed = 2f;
@@ -14,9 +15,12 @@ public class PlayerControl : MonoBehaviour {
     public AudioClip JumpSound;
     public AudioSource PlayerSource;
     public bool grounded = false; // jumping works when a ground collision can be detected
+    public BoxCollider2D attackHitbox;
 
     private Animator anim;
     private Rigidbody2D rb2d;
+    private Vector2 hitboxCoords = new Vector2(0.1f, 0.1f);
+    private Vector2 hideHitBox = new Vector2(1000f, -1000f);
 
     // Use this for initialization
     void Start()
@@ -48,19 +52,27 @@ public class PlayerControl : MonoBehaviour {
 
         if (!this.anim.GetCurrentAnimatorStateInfo(0).IsName("Player-Attack"))
         {
+            if (attackHitbox.offset != hideHitBox)
+            {
+                attackHitbox.offset = hideHitBox; // move attack hitbox away
+                isAttacking = false;
+            }
             if (Input.GetButton("Horizontal"))
             {
-                anim.ResetTrigger("Player-idle");
+                anim.ResetTrigger("Player-idle"); // play walk cycle
                 anim.Play("Player-Walk-Cycle");
             }
             else if (!Input.GetKey("x") || !Input.GetKey("j"))
             {
-                anim.ResetTrigger("Player-Walk-Cycle");
+                anim.ResetTrigger("Player-Walk-Cycle"); // play idle animation
                 anim.Play("Player-idle");
             }
             if (Input.GetKey("x") || Input.GetKey("j"))
             {
-                anim.Play("Player-Attack");
+                anim.Play("Player-Attack"); // play attack animation and throw out hitbox
+                isAttacking = true;
+                attackHitbox.offset = hitboxCoords;
+
             }
         }
 

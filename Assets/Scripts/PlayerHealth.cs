@@ -35,7 +35,7 @@ public class PlayerHealth : MonoBehaviour {
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" && GetComponent<PlayerControl>().grounded)
+        if (collision.gameObject.tag == "Enemy" && GetComponent<PlayerControl>().grounded && !GetComponent<PlayerControl>().isAttacking)
         {
             TakeDamage(1); // deal 1 damage to the player
             //collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1); // possibly deal contact damage to enemies
@@ -51,6 +51,10 @@ public class PlayerHealth : MonoBehaviour {
             { // knockback to the left
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(-500, 50)); // add force to the player when hit
             }
+        }
+        if (collision.gameObject.tag == "Enemy" && GetComponent<PlayerControl>().isAttacking)
+        {
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
         }
     }
 }
