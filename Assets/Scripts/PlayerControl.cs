@@ -35,6 +35,16 @@ public class PlayerControl : MonoBehaviour {
         {
             jump = true; // jump if the jump button is pressed and the character isn't grounded
         }
+        if (Input.GetButton("Horizontal"))
+        {
+            anim.ResetTrigger("Player-idle");
+            anim.Play("Player-Walk-Cycle");
+        }
+        else
+        {
+            anim.ResetTrigger("Player-Walk-Cycle");
+            anim.Play("Player-idle");
+        }
     }
 
     /**
@@ -64,7 +74,6 @@ public class PlayerControl : MonoBehaviour {
         {
             Flip();
         }
-
         if (jump)
         {
             PlayJumpSound();

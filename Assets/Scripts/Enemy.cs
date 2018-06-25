@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        other.GetComponent<Rigidbody2D>().AddForce( new Vector2(100000000, 100000000000));
+        other.GetComponent<Rigidbody2D>().AddForce(new Vector2(100000000, 100000000000));
         knockedBack = true;
     }
 }
