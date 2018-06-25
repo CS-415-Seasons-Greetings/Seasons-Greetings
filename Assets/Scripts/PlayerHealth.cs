@@ -46,14 +46,25 @@ public class PlayerHealth : MonoBehaviour {
             if (enemypos.x < GetComponent<Transform>().position.x)
             { // knockback to the right
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(500, 50)); // add force to the player when hit
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-250, 50));
             }
             else
             { // knockback to the left
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(-500, 50)); // add force to the player when hit
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(250, 50));
             }
         }
         if (collision.gameObject.tag == "Enemy" && GetComponent<PlayerControl>().isAttacking)
         {
+            Vector2 enemypos = collision.gameObject.GetComponent<Transform>().position; // obtain the enemy position
+            if (enemypos.x < GetComponent<Transform>().position.x)
+            { // knockback enemy to the left
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-250, 50));
+            }
+            else
+            { // knockback enemy to right
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(250, 50));
+            }
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
         }
     }

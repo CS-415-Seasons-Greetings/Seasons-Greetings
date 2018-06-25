@@ -25,15 +25,4 @@ public class EnemyHealth : MonoBehaviour {
         }
 
     }
-
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        /*
-        Debug.Log(collision.gameObject.tag);
-        if (collision.gameObject.tag.Equals("Player") && GetComponent<PlayerControl>().isAttacking)
-        {
-            TakeDamage(1);
-        }
-        */
-    }
 }
