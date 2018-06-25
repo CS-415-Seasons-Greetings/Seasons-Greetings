@@ -35,16 +35,6 @@ public class PlayerControl : MonoBehaviour {
         {
             jump = true; // jump if the jump button is pressed and the character isn't grounded
         }
-        if (Input.GetButton("Horizontal"))
-        {
-            anim.ResetTrigger("Player-idle");
-            anim.Play("Player-Walk-Cycle");
-        }
-        else
-        {
-            anim.ResetTrigger("Player-Walk-Cycle");
-            anim.Play("Player-idle");
-        }
     }
 
     /**
@@ -55,6 +45,24 @@ public class PlayerControl : MonoBehaviour {
     {
         float h = Input.GetAxis("Horizontal");
         anim.SetFloat("Speed", Mathf.Abs(h));
+
+        if (!this.anim.GetCurrentAnimatorStateInfo(0).IsName("Player-Attack"))
+        {
+            if (Input.GetButton("Horizontal"))
+            {
+                anim.ResetTrigger("Player-idle");
+                anim.Play("Player-Walk-Cycle");
+            }
+            else if (!Input.GetKey("x") || !Input.GetKey("j"))
+            {
+                anim.ResetTrigger("Player-Walk-Cycle");
+                anim.Play("Player-idle");
+            }
+            if (Input.GetKey("x") || Input.GetKey("j"))
+            {
+                anim.Play("Player-Attack");
+            }
+        }
 
         if (h * rb2d.velocity.x < maxSpeed)
         { // ensure the speed is based on the direction
