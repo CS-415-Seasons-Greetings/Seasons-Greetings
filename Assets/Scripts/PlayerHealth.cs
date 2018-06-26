@@ -9,11 +9,12 @@ public class PlayerHealth : MonoBehaviour {
     public bool hasDied;
     public int curHealth; // current health
     public int startingHealth; //starting health
+    public float iframeDuration = 2.0f;
     public Image[] HealthImages;
     public Sprite[] HealthSprites;
 
     private int MaxHeartAmount = 6;
-
+    public float timeHurt;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +22,7 @@ public class PlayerHealth : MonoBehaviour {
         startingHealth = 3;
         curHealth = startingHealth;
         CheckHealthAmount();
+        timeHurt = Time.realtimeSinceStartup;
 	}
 	
 	// Update is called once per frame
@@ -59,11 +61,16 @@ public class PlayerHealth : MonoBehaviour {
         }
     }
 
+    /**
+     * Handle All instances where the player will take or deal damage
+     * 
+     */
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" && GetComponent<PlayerControl>().grounded && !GetComponent<PlayerControl>().isAttacking)
+        if (collision.gameObject.tag == "Enemy" && GetComponent<PlayerControl>().grounded && !GetComponent<PlayerControl>().isAttacking && Time.realtimeSinceStartup > timeHurt + iframeDuration)
         {
             TakeDamage(1); // deal 1 damage to the player
+            timeHurt = Time.realtimeSinceStartup; // engage iframes
             //collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1); // possibly deal contact damage to enemies
             //Debug.Log(GetComponent<Enemy>().knockedBack); // causes some errors
             // if (GetComponent<PlayerControl>().grounded
@@ -96,6 +103,12 @@ public class PlayerHealth : MonoBehaviour {
         if (collision.gameObject.tag == "DeathTouch")
         {
             Die();
+        }
+
+        if (collision.gameObject.tag == "Spikes" && Time.realtimeSinceStartup > timeHurt + iframeDuration)
+        {
+            TakeDamage(1); // take damage from spikes and engage iframes
+            timeHurt = Time.realtimeSinceStartup; // engage iframes
         }
     }
 }
