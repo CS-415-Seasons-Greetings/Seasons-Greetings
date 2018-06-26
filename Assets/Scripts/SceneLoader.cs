@@ -12,5 +12,9 @@ public class SceneLoader : MonoBehaviour
         NextLevel++;
     }
     
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(NextLevel - 1);
+    }
 
 }
