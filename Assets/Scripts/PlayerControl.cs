@@ -6,7 +6,8 @@ public class PlayerControl : MonoBehaviour {
 
     [HideInInspector] public bool facingRight = true;
     [HideInInspector] public bool jump = false;
-    /*[HideInInspector]*/ public bool isAttacking = false;
+    /*[HideInInspector]*/
+    public bool isAttacking = false;
 
     public float moveForce;
     public float maxSpeed;
@@ -16,6 +17,7 @@ public class PlayerControl : MonoBehaviour {
     public AudioSource PlayerSource;
     public bool grounded = false; // jumping works when a ground collision can be detected
     public BoxCollider2D attackHitbox;
+    public bool pause;
 
     private Animator anim;
     private Rigidbody2D rb2d;
@@ -35,11 +37,42 @@ public class PlayerControl : MonoBehaviour {
         // ground detection works when the ground tranform object attached to the player is stuck in an object in the ground layer
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
-        if (Input.GetKeyDown("space") && grounded == true) 
+        if (Input.GetKeyDown("space") && grounded == true)
         {
             jump = true; // jump if the jump button is pressed and the character isn't grounded
         }
-    }
+        if (Input.GetKey("p")) //Pause
+        {
+            if (pause == false)
+            {
+                Time.timeScale = 0.0f;
+                pause = true;
+            }
+            else
+            {
+                if (pause == true)
+                {
+                    Time.timeScale = 1.0f;
+                    pause = false;
+                }
+            }
+        }
+        if (Input.GetKey("t"))//Slow motion
+        {
+            Time.timeScale = 0.3f;
+        }
+        if (Input.GetKey("r"))//Normal Speed
+        {
+            Time.timeScale = 1.0f;
+        }
+        if(Input.GetKey("y"))
+        {
+            Time.timeScale = 2.0f;
+        }
+    } 
+
+    
+    
 
     /**
      * Controls Physics Updates
@@ -74,6 +107,7 @@ public class PlayerControl : MonoBehaviour {
                 attackHitbox.offset = hitboxCoords;
 
             }
+            
         }
 
         if (h * rb2d.velocity.x < maxSpeed)
