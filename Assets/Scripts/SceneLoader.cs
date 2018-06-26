@@ -3,18 +3,26 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public int NextLevel = 1; //Main Menu is 0, Tutorial Level is 1 etc.
-
+    static int CurrentLevel = 0;
 
     public void ChangeScene()
     {
-        SceneManager.LoadScene(NextLevel);
-        NextLevel++;
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        CurrentLevel++;
+        SceneManager.LoadScene(CurrentLevel);
     }
     
     public void ReloadScene()
     {
-        SceneManager.LoadScene(NextLevel - 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(CurrentLevel);
     }
 
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            ChangeScene();
+        }
+    }
 }

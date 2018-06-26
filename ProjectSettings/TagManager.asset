@@ -10,6 +10,7 @@ TagManager:
   - Spikes
   - Quit
   - Play
+  - NextLevel
   layers:
   - Default
   - TransparentFX
