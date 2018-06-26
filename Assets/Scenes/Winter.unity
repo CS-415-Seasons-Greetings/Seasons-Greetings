@@ -546,9 +546,9 @@ GameObject:
   - component: {fileID: 850959434}
   - component: {fileID: 850959433}
   - component: {fileID: 850959435}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: spikes
-  m_TagString: Untagged
+  m_TagString: Spikes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1546,11 +1546,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 891510249}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.119999886, y: 0.29, z: 0}
+  m_LocalPosition: {x: -0.11999893, y: 0.28999996, z: 0}
   m_LocalScale: {x: 1.8296351, y: 1.8296351, z: 1.0762559}
   m_Children: []
   m_Father: {fileID: 755976008}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &931540725
 GameObject:
@@ -1965,6 +1965,11 @@ Prefab:
     - target: {fileID: 4778365247819598, guid: 9112ad1ca3791494e8e6d206acb8f952, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224097463941973368, guid: 9112ad1ca3791494e8e6d206acb8f952,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9112ad1ca3791494e8e6d206acb8f952, type: 2}
