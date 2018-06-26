@@ -8,9 +8,9 @@ public class PlayerControl : MonoBehaviour {
     [HideInInspector] public bool jump = false;
     /*[HideInInspector]*/ public bool isAttacking = false;
 
-    public float moveForce = 150f;
-    public float maxSpeed = 2f;
-    public float jumpForce = 200;
+    public float moveForce;
+    public float maxSpeed;
+    public float jumpForce;
     public Transform groundCheck;
     public AudioClip JumpSound;
     public AudioSource PlayerSource;
