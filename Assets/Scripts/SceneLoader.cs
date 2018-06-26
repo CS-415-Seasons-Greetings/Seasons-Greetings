@@ -1,12 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour {
+public class SceneLoader : MonoBehaviour
+{
+    public int NextLevel = 1; //Main Menu is 0, Tutorial Level is 1 etc.
 
-    public void ChangeScene(string nextLevel)
+
+    public void ChangeScene()
     {
-        SceneManager.LoadScene(nextLevel);
+        SceneManager.LoadScene(NextLevel);
+        NextLevel++;
     }
+    
+
 }

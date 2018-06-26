@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - Enemy
   - Spikes
+  - Quit
+  - Play
   layers:
   - Default
   - TransparentFX

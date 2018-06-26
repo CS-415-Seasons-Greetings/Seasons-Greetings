@@ -16,34 +16,41 @@ public class PlayerHealth : MonoBehaviour {
     private int MaxHeartAmount = 6;
     public float timeHurt;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         hasDied = false;
-        startingHealth = 3;
+        startingHealth = 6;
         curHealth = startingHealth;
         CheckHealthAmount();
+    // Updated upstream
         timeHurt = Time.realtimeSinceStartup;
 	}
 	
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         if (gameObject.transform.position.y < -4 || curHealth < 1)
         {
             Die();
         }
-	}
+    }
 
     void Die()
     {
         hasDied = true;
-        //SceneManager.LoadScene("Level design");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // reloads the current scene when the player dies
+        SceneManager.LoadScene("Death Screen");
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // reloads the current scene when the player dies
     }
 
     public void TakeDamage(int amount)
     {
         curHealth -= amount;
         CheckHealthAmount();
+    }
+
+    public void AddHealth(int amount)
+    {
+        curHealth += amount;
     }
 
     public void CheckHealthAmount()
