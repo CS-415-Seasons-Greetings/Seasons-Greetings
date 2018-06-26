@@ -10,7 +10,7 @@ public class PlayerControl : MonoBehaviour {
 
     public float moveForce = 150f;
     public float maxSpeed = 2f;
-    public float jumpForce = 120;
+    public float jumpForce = 200;
     public Transform groundCheck;
     public AudioClip JumpSound;
     public AudioSource PlayerSource;
@@ -48,7 +48,7 @@ public class PlayerControl : MonoBehaviour {
     private void FixedUpdate()
     {
         float h = Input.GetAxis("Horizontal");
-        anim.SetFloat("Speed", Mathf.Abs(h));
+        //anim.SetFloat("Speed", Mathf.Abs(h));
 
         if (!this.anim.GetCurrentAnimatorStateInfo(0).IsName("Player-Attack"))
         {
@@ -59,12 +59,12 @@ public class PlayerControl : MonoBehaviour {
             }
             if (Input.GetButton("Horizontal"))
             {
-                anim.ResetTrigger("Player-idle"); // play walk cycle
+                //anim.ResetTrigger("Player-idle"); // play walk cycle
                 anim.Play("Player-Walk-Cycle");
             }
             else if (!Input.GetKey("x") || !Input.GetKey("j"))
             {
-                anim.ResetTrigger("Player-Walk-Cycle"); // play idle animation
+                //anim.ResetTrigger("Player-Walk-Cycle"); // play idle animation
                 anim.Play("Player-idle");
             }
             if (Input.GetKey("x") || Input.GetKey("j"))
@@ -97,7 +97,7 @@ public class PlayerControl : MonoBehaviour {
         if (jump)
         {
             PlayJumpSound();
-            anim.SetTrigger("Jump");
+            //anim.SetTrigger("Jump");
             rb2d.AddForce(new Vector2(0f, jumpForce)); // add jump force to the sprite
             jump = false;
         }

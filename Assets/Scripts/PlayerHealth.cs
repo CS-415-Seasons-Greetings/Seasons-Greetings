@@ -2,20 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour {
 
     public bool hasDied;
-    public int health; // health is set in the editor
+    public int curHealth; // current health
+    public int startingHealth; //starting health
+    public Image[] HealthImages;
+    public Sprite[] HealthSprites;
+
+    private int MaxHeartAmount = 6;
+
 
 	// Use this for initialization
 	void Start () {
         hasDied = false;
+        startingHealth = 3;
+        curHealth = startingHealth;
+        CheckHealthAmount();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (gameObject.transform.position.y < -4 || health < 1)
+        if (gameObject.transform.position.y < -4 || curHealth < 1)
         {
             Die();
         }
@@ -30,7 +40,23 @@ public class PlayerHealth : MonoBehaviour {
 
     public void TakeDamage(int amount)
     {
-        health -= amount;
+        curHealth -= amount;
+        CheckHealthAmount();
+    }
+
+    public void CheckHealthAmount()
+    {
+        for (int i = 0; i < MaxHeartAmount; i++)
+        {
+            if(curHealth <= i)
+            {
+                HealthImages[i].enabled = false;
+            }
+            else
+            {
+                HealthImages[i].enabled = true;
+            }
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -41,7 +67,6 @@ public class PlayerHealth : MonoBehaviour {
             //collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1); // possibly deal contact damage to enemies
             //Debug.Log(GetComponent<Enemy>().knockedBack); // causes some errors
             // if (GetComponent<PlayerControl>().grounded
-            Debug.Log("Knockback");
             Vector2 enemypos = collision.gameObject.GetComponent<Transform>().position; // obtain the enemy position
             if (enemypos.x < GetComponent<Transform>().position.x)
             { // knockback to the right
@@ -66,6 +91,11 @@ public class PlayerHealth : MonoBehaviour {
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(250, 50));
             }
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
+        }
+        
+        if (collision.gameObject.tag == "DeathTouch")
+        {
+            Die();
         }
     }
 }
