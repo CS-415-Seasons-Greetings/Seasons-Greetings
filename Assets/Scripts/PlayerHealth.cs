@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour {
     public Sprite[] HealthSprites;
 
     private int MaxHeartAmount = 6;
-    public float timeHurt;
+    public float timeHurt; // time player got hurt
 
     // Use this for initialization
     void Start() {
