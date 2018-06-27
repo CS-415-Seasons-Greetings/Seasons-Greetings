@@ -29,7 +29,7 @@ public class PlayerHealth : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.transform.position.y < -4 || curHealth < 1)
+        if (gameObject.transform.position.y < -10 || curHealth < 1)
         {
             Die();
         }
