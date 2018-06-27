@@ -74,39 +74,48 @@ public class PlayerHealth : MonoBehaviour {
      */
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" && GetComponent<PlayerControl>().grounded && !GetComponent<PlayerControl>().isAttacking && Time.realtimeSinceStartup > timeHurt + iframeDuration)
+        if ((collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
+                && GetComponent<PlayerControl>().grounded && !GetComponent<PlayerControl>().isAttacking && Time.realtimeSinceStartup > timeHurt + iframeDuration)
         {
             TakeDamage(1); // deal 1 damage to the player
             timeHurt = Time.realtimeSinceStartup; // engage iframes
-            //collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1); // possibly deal contact damage to enemies
-            //Debug.Log(GetComponent<Enemy>().knockedBack); // causes some errors
-            // if (GetComponent<PlayerControl>().grounded
             Vector2 enemypos = collision.gameObject.GetComponent<Transform>().position; // obtain the enemy position
             if (enemypos.x < GetComponent<Transform>().position.x)
             { // knockback to the right
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(500, 50)); // add force to the player when hit
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-250, 50));
+
+                if (collision.gameObject.tag == "Enemy") // no knockback on bosses
+                {
+                    collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-250, 50));
+                }
             }
             else
             { // knockback to the left
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(-500, 50)); // add force to the player when hit
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(250, 50));
+
+                if (collision.gameObject.tag == "Enemy") // no knockback on bosses
+                {
+                    collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(250, 50));
+                }
             }
         }
-        if (collision.gameObject.tag == "Enemy" && GetComponent<PlayerControl>().isAttacking)
+        if ((collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss") && GetComponent<PlayerControl>().isAttacking)
         {
             Vector2 enemypos = collision.gameObject.GetComponent<Transform>().position; // obtain the enemy position
-            if (enemypos.x < GetComponent<Transform>().position.x)
-            { // knockback enemy to the left
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-250, 50));
-            }
-            else
-            { // knockback enemy to right
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(250, 50));
+            if (collision.gameObject.tag == "Enemy")
+            {
+                if (enemypos.x < GetComponent<Transform>().position.x)
+                { // knockback enemy to the left
+                    collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-250, 50));
+                }
+                else
+                { // knockback enemy to right
+                    collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(250, 50));
+                }
             }
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
         }
-        
+
         if (collision.gameObject.tag == "DeathTouch")
         {
             Die();
@@ -117,5 +126,12 @@ public class PlayerHealth : MonoBehaviour {
             TakeDamage(1); // take damage from spikes and engage iframes
             timeHurt = Time.realtimeSinceStartup; // engage iframes
         }
+
+        
+        if (collision.gameObject.layer.ToString() == "Projectile")
+        {
+            Destroy(collision.gameObject); // destroy the object if its a fireball
+        }
+        
     }
 }

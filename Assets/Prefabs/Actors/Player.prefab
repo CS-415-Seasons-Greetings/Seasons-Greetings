@@ -251,7 +251,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1320231550414302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.51, y: 3.77, z: 0}
+  m_LocalPosition: {x: -6, y: 3.7, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4494017958111524}
@@ -285,7 +285,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.5
+  orthographic size: 4.2
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -777,6 +777,7 @@ MonoBehaviour:
   PlayerSource: {fileID: 82933043427175454}
   grounded: 0
   attackHitbox: {fileID: 61485257854611110}
+  pause: 0
 --- !u!124 &124143948344458744
 Behaviour:
   m_ObjectHideFlags: 1

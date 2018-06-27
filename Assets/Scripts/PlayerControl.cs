@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour {
 
@@ -23,12 +24,19 @@ public class PlayerControl : MonoBehaviour {
     private Rigidbody2D rb2d;
     private Vector2 hitboxCoords = new Vector2(0.1f, 0.1f);
     private Vector2 hideHitBox = new Vector2(1000f, -1000f);
+    private bool canDoubleJump; // determines if the player can double jump
+    private bool doubleJump; // determines if the player has second jump available
 
     // Use this for initialization
     void Start()
     {
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
+        if (SceneManager.GetActiveScene().name.Equals("Winter"))
+        {
+            canDoubleJump = true;
+            doubleJump = true;
+        }
     }
 
     // Update is called once per frame
@@ -36,11 +44,21 @@ public class PlayerControl : MonoBehaviour {
     {
         // ground detection works when the ground tranform object attached to the player is stuck in an object in the ground layer
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+        if (grounded)
+        {
+            doubleJump = true;
+        }
 
-        if (Input.GetKeyDown("space") && grounded == true)
+        if (Input.GetKeyDown("space") && grounded)
         {
             jump = true; // jump if the jump button is pressed and the character isn't grounded
         }
+        if (Input.GetKeyDown("space") && canDoubleJump && doubleJump && !grounded)
+        {
+            jump = true; // allow for double jump
+            doubleJump = false;
+        }
+
         if (Input.GetKey("p")) //Pause
         {
             if (pause == false)
@@ -70,9 +88,6 @@ public class PlayerControl : MonoBehaviour {
             Time.timeScale = 2.0f;
         }
     } 
-
-    
-    
 
     /**
      * Controls Physics Updates
