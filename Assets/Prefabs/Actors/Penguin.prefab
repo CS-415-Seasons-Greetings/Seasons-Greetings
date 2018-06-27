@@ -61,6 +61,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1850888781938610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4314137298765768}
+  m_Layer: 0
+  m_Name: Ground Detection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4113897095486754
 Transform:
   m_ObjectHideFlags: 1
@@ -68,11 +83,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1462117156596258}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.778, y: -2.268, z: 2.0234375}
+  m_LocalPosition: {x: 5.2047005, y: -0.64322317, z: 4.046875}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4306516082573616}
   - {fileID: 4502226010190654}
+  - {fileID: 4314137298765768}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -89,6 +105,19 @@ Transform:
   m_Father: {fileID: 4113897095486754}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4314137298765768
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1850888781938610}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.166, y: -0.068, z: -0.10546875}
+  m_LocalScale: {x: 0.00008996539, y: 0.001594056, z: 0.014828426}
+  m_Children: []
+  m_Father: {fileID: 4113897095486754}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4502226010190654
 Transform:
   m_ObjectHideFlags: 1
@@ -96,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1361350993855798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.004, y: -0.019, z: 0}
+  m_LocalPosition: {x: -0.011, y: -0.019, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4113897095486754}
@@ -173,12 +202,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 1
-  moveForce: 150
-  maxSpeed: 2
-  isMoving: 0
-  leftBound: 3
-  rightBound: 6
-  h: 0
+  distance: 1
+  speed: 1
+  groundDetection: {fileID: 4314137298765768}
 --- !u!212 &212587942326001378
 SpriteRenderer:
   m_ObjectHideFlags: 1
