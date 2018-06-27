@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
             if(movingRight == true)
             {
                 transform.eulerAngles = new Vector3(0, -180, 0);
+
                 movingRight = false;
             }
             else

@@ -55,6 +55,7 @@ public class PlayerHealth : MonoBehaviour {
 
     public void CheckHealthAmount()
     {
+        Debug.Log("Check hud hearts");
         for (int i = 0; i < MaxHeartAmount; i++)
         {
             if(curHealth <= i)
