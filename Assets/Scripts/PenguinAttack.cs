@@ -7,7 +7,7 @@ public class PenguinAttack : MonoBehaviour {
     [HideInInspector] public bool facingRight = true;
 
     public Transform groundCheck;
-    public Transform penguinLocation;
+    public Transform snowballSpawn;
     public GameObject snowballPrefab;
     public float jumpMin;
     public float jumpMax;
@@ -22,7 +22,8 @@ public class PenguinAttack : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rb2d = GetComponent<Rigidbody2D>(); // obtain the enemies Physics Collider and Animation Controller
-        anim = GetComponent<SpriteRenderer>().GetComponent<Animator>();
+        anim = GetComponent<Animator>();
+        snowballTime = 0; // get initial time
     }
 	
 	// Update is called once per frame
@@ -38,7 +39,7 @@ public class PenguinAttack : MonoBehaviour {
             snowballTime = Time.realtimeSinceStartup;
             anim.Play("SnowballAtk"); // play the attack animation
             // make penguin shoot snowball
-            GameObject snowball = Instantiate(snowballPrefab, penguinLocation.position, Quaternion.identity) as GameObject;
+            GameObject snowball = Instantiate(snowballPrefab, snowballSpawn.position, Quaternion.identity) as GameObject;
             snowball.GetComponent<Rigidbody2D>().velocity = new Vector2(1.5f, 0);
         }
     }
