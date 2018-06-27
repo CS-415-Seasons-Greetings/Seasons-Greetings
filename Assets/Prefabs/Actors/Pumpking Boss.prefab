@@ -202,8 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786671ec73d97e549af262021e91e351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  maxHealth: 3
+  health: 5
+  maxHealth: 5
   locationCheck: {fileID: 4627831673986022}
 --- !u!212 &212597252224090578
 SpriteRenderer:

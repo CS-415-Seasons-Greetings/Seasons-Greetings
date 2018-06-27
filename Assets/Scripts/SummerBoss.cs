@@ -13,6 +13,8 @@ public class SummerBoss : MonoBehaviour {
     public bool grounded;
     public float jumpCD; // cooldown before the boss can take another action
     public float fireCD;
+    public AudioClip fireballSound;
+    public AudioSource fireballSource;
 
     private Rigidbody2D rb2d;
     private Animator anim;
@@ -46,9 +48,15 @@ public class SummerBoss : MonoBehaviour {
         {
             fireballTime = Time.realtimeSinceStartup;
             anim.Play("Attack"); // play the attack animation
+            PlayFireballSound(); // play fireball sound
             // make boss shoot fireball here
             GameObject fireball = Instantiate(fireballPrefab, pitchforkTip.position, Quaternion.identity) as GameObject;
             fireball.GetComponent<Rigidbody2D>().velocity = new Vector2(-1.5f, 0);
         }
+    }
+    void PlayFireballSound()
+    {
+        fireballSource.clip = fireballSound;
+        fireballSource.Play();
     }
 }

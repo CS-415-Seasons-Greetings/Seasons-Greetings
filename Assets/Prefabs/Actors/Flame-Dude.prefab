@@ -11,6 +11,21 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1123104459904502}
   m_IsPrefabAsset: 1
+--- !u!1 &1056020229911786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4791603328668794}
+  m_Layer: 0
+  m_Name: Ground Detection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1123104459904502
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,30 +47,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1432519860591134
+--- !u!1 &1994641623634952
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4022265407328908}
+  - component: {fileID: 4281007872647372}
   m_Layer: 11
-  m_Name: groundCheck
+  m_Name: locationCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4022265407328908
+--- !u!4 &4281007872647372
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1432519860591134}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 1994641623634952}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.096, y: -0.164, z: -16.550781}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 4746703017447672}
   m_RootOrder: 0
@@ -66,13 +81,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1123104459904502}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 66.14, y: 18.5, z: -0.07421875}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -94.27979, y: -7.3207855, z: -0.20703125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4022265407328908}
+  - {fileID: 4281007872647372}
+  - {fileID: 4791603328668794}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4791603328668794
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1056020229911786}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.36, y: -0.153, z: -16.65625}
+  m_LocalScale: {x: 0.00018, y: 0.0031899998, z: 0.01483}
+  m_Children: []
+  m_Father: {fileID: 4746703017447672}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50086947838262992
 Rigidbody2D:
@@ -140,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   maxHealth: 2
-  locationCheck: {fileID: 4022265407328908}
+  locationCheck: {fileID: 4281007872647372}
 --- !u!114 &114452154111903840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,12 +182,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 1
-  moveForce: 75
-  maxSpeed: 1.5
-  isMoving: 1
-  leftBound: 0
-  rightBound: 0
-  h: 0
+  distance: 1
+  speed: 1
+  groundDetection: {fileID: 4791603328668794}
 --- !u!212 &212100738822885656
 SpriteRenderer:
   m_ObjectHideFlags: 1
