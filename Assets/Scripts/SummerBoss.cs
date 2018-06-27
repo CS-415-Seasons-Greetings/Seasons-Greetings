@@ -6,6 +6,8 @@ public class SummerBoss : MonoBehaviour {
     [HideInInspector] public bool facingRight = true;
 
     public Transform groundCheck;
+    public Transform pitchforkTip;
+    public GameObject fireballPrefab;
     public float jumpMin;
     public float jumpMax;
     public bool grounded;
@@ -20,7 +22,7 @@ public class SummerBoss : MonoBehaviour {
     public void Start()
     {
         rb2d = GetComponent<Rigidbody2D>(); // obtain the enemies Physics Collider and Animation Controller
-        anim = GetComponent<Animator>();
+        anim = GetComponent<SpriteRenderer>().GetComponent<Animator>();
     }
 
     void Update()
@@ -43,8 +45,10 @@ public class SummerBoss : MonoBehaviour {
         if (fireballTime + fireCD < currentTime)
         {
             fireballTime = Time.realtimeSinceStartup;
-
+            anim.Play("Attack"); // play the attack animation
             // make boss shoot fireball here
+            GameObject fireball = Instantiate(fireballPrefab, pitchforkTip.position, Quaternion.identity) as GameObject;
+            fireball.GetComponent<Rigidbody2D>().velocity = new Vector2(-1.5f, 0);
         }
     }
 }
