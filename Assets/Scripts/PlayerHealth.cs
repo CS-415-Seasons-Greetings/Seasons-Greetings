@@ -31,7 +31,7 @@ public class PlayerHealth : MonoBehaviour {
     {
         if (gameObject.transform.position.y < -15 || curHealth < 1)
         {
-            Die();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
@@ -118,7 +118,8 @@ public class PlayerHealth : MonoBehaviour {
 
         if (collision.gameObject.tag == "DeathTouch")
         {
-            Die();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //Die();
         }
 
         if (collision.gameObject.tag == "Spikes" && Time.realtimeSinceStartup > timeHurt + iframeDuration)

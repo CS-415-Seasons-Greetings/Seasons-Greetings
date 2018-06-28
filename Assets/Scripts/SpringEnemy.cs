@@ -4,23 +4,41 @@ using UnityEngine;
 
 public class SpringEnemy : MonoBehaviour
 {
+    [HideInInspector] private bool facingRight = true;
 
     public GameObject target; //the enemy's target
-    public float moveSpeed = 0.01f; //move speed
+    public float moveSpeed = 1f; //move speed
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
     }
     void Update()
     {
-
-        /* Vector3 targetDir = target.transform.position - transform.position;
-         float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f;
-         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-         transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 180);
-         transform.Translate(Vector3.up * Time.deltaTime * moveSpeed);
-         */
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
+        if(target.transform.position.x < transform.position.x)
+        {
+            if(facingRight)
+            {
+                Flip();
+            }
+          
+        }
+        if (target.transform.position.x > transform.position.x)
+        {
+            if (!facingRight)
+            {
+                Flip();
+            }
 
+        }
+    }
+
+    void Flip()
+    {
+        facingRight = !facingRight;
+
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 }

@@ -38,8 +38,8 @@ GameObject:
   - component: {fileID: 50985678555885664}
   - component: {fileID: 114276076708926302}
   - component: {fileID: 95869046485653462}
-  - component: {fileID: 114831203268948346}
   - component: {fileID: 212749896074869388}
+  - component: {fileID: 114699824184061700}
   m_Layer: 11
   m_Name: Penguin
   m_TagString: Enemy
@@ -84,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1462117156596258}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.924425, y: -6.1945205, z: -16.625}
+  m_LocalPosition: {x: 86.77017, y: 10.178551, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4502226010190654}
@@ -209,7 +209,7 @@ MonoBehaviour:
   health: 1
   maxHealth: 1
   locationCheck: {fileID: 4502226010190654}
---- !u!114 &114831203268948346
+--- !u!114 &114699824184061700
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,19 +217,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1462117156596258}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 233470f0bccf44840805623224a85e88, type: 3}
+  m_Script: {fileID: 11500000, guid: 05012290f6eb6104ba04aa3415320859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 1
-  groundCheck: {fileID: 4314137298765768}
-  snowballSpawn: {fileID: 4399140344134202}
-  snowballPrefab: {fileID: 1673984351347412, guid: 5182af149dcc7d64691ee203e910d415,
-    type: 2}
-  jumpMin: 0
-  jumpMax: 0
-  grounded: 0
-  jumpCD: 1
-  snowballCD: 3
+  distance: 1
+  speed: 1
+  groundDetection: {fileID: 4314137298765768}
 --- !u!212 &212749896074869388
 SpriteRenderer:
   m_ObjectHideFlags: 1
