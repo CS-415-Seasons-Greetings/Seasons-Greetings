@@ -13,13 +13,13 @@ public class PlayerHealth : MonoBehaviour {
     public Image[] HealthImages;
     public Sprite[] HealthSprites;
 
-    private int MaxHeartAmount = 6;
+    private int MaxHeartAmount = 10;
     public float timeHurt; // time player got hurt
 
     // Use this for initialization
     void Start() {
         hasDied = false;
-        startingHealth = 6;
+        startingHealth = 10;
         curHealth = startingHealth;
         CheckHealthAmount();
     // Updated upstream
@@ -29,7 +29,7 @@ public class PlayerHealth : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.transform.position.y < -15 || curHealth < 1)
+        if (gameObject.transform.position.y < -15)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
@@ -45,7 +45,14 @@ public class PlayerHealth : MonoBehaviour {
     public void TakeDamage(int amount)
     {
         curHealth -= amount;
-        CheckHealthAmount();
+        if (curHealth <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            CheckHealthAmount();
+        }
     }
 
     public void AddHealth(int amount)
