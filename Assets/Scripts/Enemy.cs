@@ -35,7 +35,8 @@ public class Enemy : MonoBehaviour
         transform.Translate(Vector2.right * speed * Time.deltaTime);
         RaycastHit2D groundInfoRight = Physics2D.Raycast(groundDetection.position, new Vector2(1,-1), distance);
         RaycastHit2D groundInfoLeft = Physics2D.Raycast(groundDetection.position, new Vector2(-1, -1), distance);
-        if (groundInfoRight.collider == false || groundInfoLeft.collider == false || groundInfoLeft.collider.gameObject.tag == "Enemy" || groundInfoRight.collider.gameObject.tag == "Enemy") 
+        if (groundInfoRight.collider == false || groundInfoLeft.collider == false || groundInfoLeft.collider.gameObject.tag == "Enemy" || groundInfoRight.collider.gameObject.tag == "Enemy" 
+            || groundInfoLeft.collider.gameObject.tag == "Cactus" || groundInfoRight.collider.gameObject.tag == "Cactus") 
         {
             if(movingRight == true)
             {

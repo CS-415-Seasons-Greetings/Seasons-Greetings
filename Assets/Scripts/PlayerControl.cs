@@ -13,6 +13,10 @@ public class PlayerControl : MonoBehaviour {
     public float moveForce;
     public float maxSpeed;
     public float jumpForce;
+    //public float fallMultiplier;
+    //public float lowJumpMultipier;
+    //public float jumpTime;// holds how long jump was pressed
+    //public float extraJumpForce;
     public Transform groundCheck;
     public AudioClip JumpSound;
     public AudioSource PlayerSource;
@@ -26,10 +30,13 @@ public class PlayerControl : MonoBehaviour {
     private Vector2 hideHitBox = new Vector2(1000f, -1000f);
     private bool canDoubleJump; // determines if the player can double jump
     private bool doubleJump; // determines if the player has second jump available
+    
 
     // Use this for initialization
     void Start()
     {
+        //fallMultiplier = 5f;
+       // lowJumpMultipier = 1f;
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         if (SceneManager.GetActiveScene().name.Equals("Winter"))
@@ -49,14 +56,16 @@ public class PlayerControl : MonoBehaviour {
             doubleJump = true;
         }
 
-        if (Input.GetKeyDown("space") && grounded)
+        if (Input.GetKey("space") && grounded)
         {
             jump = true; // jump if the jump button is pressed and the character isn't grounded
+            //jumpTime += Time.deltaTime;
         }
-        if (Input.GetKeyDown("space") && canDoubleJump && doubleJump && !grounded)
+        if (Input.GetKey("space") && canDoubleJump && doubleJump && !grounded)
         {
             jump = true; // allow for double jump
             doubleJump = false;
+            //jumpTime += Time.fixedDeltaTime;
         }
 
         if (Input.GetKey("p")) //Pause
@@ -148,7 +157,21 @@ public class PlayerControl : MonoBehaviour {
             PlayJumpSound();
             //anim.SetTrigger("Jump");
             rb2d.AddForce(new Vector2(0f, jumpForce)); // add jump force to the sprite
+            //rb2d.velocity = Vector2.up * jumpForce * (jumpExtra * 20);
+            
+            
+            /*if (rb2d.velocity.y < 0.0)  //my attempt to make holding spacebar go higher.
+            {
+                //the one is for the phyics's engine normal gravity. We counteract it so our multiplier is what we want.
+                rb2d.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+            }
+            else if(rb2d.velocity.y > 0.0 && !jumpKeyPress)
+            {
+                rb2d.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultipier - 1) * Time.fixedDeltaTime;
+            }*/
+            
             jump = false;
+         
         }
     }
 

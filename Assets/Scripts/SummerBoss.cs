@@ -34,6 +34,11 @@ public class SummerBoss : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        fireCD = Random.Range(2f, 10f);
+        jumpCD = Random.Range(3f, 5f);
+        jumpMin = 20000;
+        jumpMax = 40000;
+
         float currentTime = Time.realtimeSinceStartup;
         if (jumpTime + jumpCD < currentTime)
         {

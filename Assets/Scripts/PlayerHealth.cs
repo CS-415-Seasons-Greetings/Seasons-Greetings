@@ -7,19 +7,18 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour {
 
     public bool hasDied;
-    public int curHealth; // current health
+    static int curHealth; // current health
     public int startingHealth; //starting health
     public float iframeDuration = 2.0f;
     public Image[] HealthImages;
     public Sprite[] HealthSprites;
 
-    private int MaxHeartAmount = 10;
     public float timeHurt; // time player got hurt
 
     // Use this for initialization
     void Start() {
         hasDied = false;
-        startingHealth = 10;
+        startingHealth = 3;
         curHealth = startingHealth;
         CheckHealthAmount();
     // Updated upstream
@@ -62,7 +61,7 @@ public class PlayerHealth : MonoBehaviour {
 
     public void CheckHealthAmount()
     {
-        for (int i = 0; i < MaxHeartAmount; i++)
+        for (int i = 0; i < startingHealth; i++)
         {
             if(curHealth <= i)
             {
