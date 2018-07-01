@@ -17922,6 +17922,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1910986167
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4868612607185784, guid: 49d2a9904199f4b4096048d30a63ee22, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868612607185784, guid: 49d2a9904199f4b4096048d30a63ee22, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868612607185784, guid: 49d2a9904199f4b4096048d30a63ee22, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868612607185784, guid: 49d2a9904199f4b4096048d30a63ee22, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868612607185784, guid: 49d2a9904199f4b4096048d30a63ee22, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868612607185784, guid: 49d2a9904199f4b4096048d30a63ee22, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868612607185784, guid: 49d2a9904199f4b4096048d30a63ee22, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868612607185784, guid: 49d2a9904199f4b4096048d30a63ee22, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 49d2a9904199f4b4096048d30a63ee22, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1937049587
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,8 +35,6 @@ public class PlayerControl : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        //fallMultiplier = 5f;
-       // lowJumpMultipier = 1f;
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         if (SceneManager.GetActiveScene().name.Equals("Winter"))
@@ -59,13 +57,11 @@ public class PlayerControl : MonoBehaviour {
         if (Input.GetKey("space") && grounded)
         {
             jump = true; // jump if the jump button is pressed and the character isn't grounded
-            //jumpTime += Time.deltaTime;
         }
         if (Input.GetKey("space") && canDoubleJump && doubleJump && !grounded)
         {
             jump = true; // allow for double jump
             doubleJump = false;
-            //jumpTime += Time.fixedDeltaTime;
         }
 
         if (Input.GetKey("p")) //Pause
