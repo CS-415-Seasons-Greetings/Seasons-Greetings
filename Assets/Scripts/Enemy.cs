@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+
     [HideInInspector] public bool facingRight = true;
 
     //public float moveForce;

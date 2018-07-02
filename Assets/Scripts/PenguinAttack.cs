@@ -39,8 +39,12 @@ public class PenguinAttack : MonoBehaviour {
             snowballTime = Time.realtimeSinceStartup;
             anim.Play("SnowballAtk"); // play the attack animation
             // make penguin shoot snowball
-            GameObject snowball = Instantiate(snowballPrefab, snowballSpawn.position, Quaternion.identity) as GameObject;
-            snowball.GetComponent<Rigidbody2D>().velocity = new Vector2(1.5f, 0);
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("SnowballAtk"))
+            {
+                GameObject snowball = Instantiate(snowballPrefab, snowballSpawn.position, Quaternion.identity) as GameObject;
+                snowball.GetComponent<Rigidbody2D>().velocity = new Vector2(1.5f, 0);
+            }
+            
         }
     }
 }
