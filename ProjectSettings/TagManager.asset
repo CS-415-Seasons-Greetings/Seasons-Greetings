@@ -12,6 +12,8 @@ TagManager:
   - Play
   - NextLevel
   - Boss
+  - Collect
+  - Cactus
   layers:
   - Default
   - TransparentFX
@@ -28,7 +30,7 @@ TagManager:
   - Pit
   - Player
   - Projectile
-  - 
+  - Collect
   - 
   - 
   - 
@@ -46,6 +48,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Collect
+    uniqueID: 1625890185
+    locked: 0
   - name: background backround
     uniqueID: 2126296595
     locked: 0

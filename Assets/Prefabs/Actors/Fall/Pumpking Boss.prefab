@@ -187,10 +187,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9961d138f4f610409758cddd0392fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facingRight: 1
-  distance: 1
-  speed: 1
-  groundDetection: {fileID: 4025338218179768}
+  FlowerSpawn: {fileID: 0}
+  FlowerDudePrefab: {fileID: 0}
+  SpawnCD: 0
 --- !u!114 &114453278873105368
 MonoBehaviour:
   m_ObjectHideFlags: 1
