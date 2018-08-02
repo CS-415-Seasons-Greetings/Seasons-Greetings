@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (locationCheck.position.y < -7)
+        if (locationCheck.position.y < -15)
         {
             Destroy(gameObject);
         }

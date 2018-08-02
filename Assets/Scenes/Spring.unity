@@ -10679,13 +10679,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 670982856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9961d138f4f610409758cddd0392fc9, type: 3}
+  m_Script: {fileID: 11500000, guid: e1f673210d5b987409bd03a292dec2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlowerSpawn: {fileID: 2076435132}
+  FlowerDudeSpawn: {fileID: 2076435132}
   FlowerDudePrefab: {fileID: 1181635013345382, guid: b229fca07228e5f40b05a50a679cc990,
     type: 2}
-  SpawnCD: 3
+  SpawnCD: 2
 --- !u!1 &674733983
 GameObject:
   m_ObjectHideFlags: 0

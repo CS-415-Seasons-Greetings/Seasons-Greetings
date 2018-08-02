@@ -109,7 +109,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1499791986034190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 149.15, y: -1.91, z: -4.4609375}
+  m_LocalPosition: {x: 165.5, y: -0.21, z: -2.2304688}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4627831673986022}
@@ -187,9 +187,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9961d138f4f610409758cddd0392fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlowerSpawn: {fileID: 0}
-  FlowerDudePrefab: {fileID: 0}
-  SpawnCD: 0
+  MiniPumpkinSpawnRain: {fileID: 0}
+  MiniPumpkinPrefab: {fileID: 1278017542041256, guid: 7941dca6da8f84d438bc8b36a2e972d5,
+    type: 2}
+  MiniPumpkinSpawnClose: {fileID: 0}
+  SpawnCDClose: 0
+  SpawnCDRain: 0
+  target: {fileID: 0}
+  moveSpeed: 0.05
 --- !u!114 &114453278873105368
 MonoBehaviour:
   m_ObjectHideFlags: 1

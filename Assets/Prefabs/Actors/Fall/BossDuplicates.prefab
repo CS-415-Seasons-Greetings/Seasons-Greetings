@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 61661563457208228}
   - component: {fileID: 50827612922822722}
   - component: {fileID: 114065428478406300}
-  - component: {fileID: 114965926374425188}
+  - component: {fileID: 114617839388540412}
   m_Layer: 0
   m_Name: BossDuplicates
   m_TagString: Enemy
@@ -109,7 +109,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1278017542041256}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 146.41, y: -0.51337, z: -4.4609375}
+  m_LocalPosition: {x: 164.18, y: -12.86, z: -4.4609375}
   m_LocalScale: {x: 0.08458673, y: 0.080357395, z: 0.16917346}
   m_Children:
   - {fileID: 4507317238812976}
@@ -145,7 +145,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -187,10 +187,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786671ec73d97e549af262021e91e351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  maxHealth: 5
+  health: 1
+  maxHealth: 1
   locationCheck: {fileID: 4507317238812976}
---- !u!114 &114965926374425188
+--- !u!114 &114617839388540412
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,12 +198,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1278017542041256}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9961d138f4f610409758cddd0392fc9, type: 3}
+  m_Script: {fileID: 11500000, guid: c3746adb634ba714f861c6e25aaba0e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlowerSpawn: {fileID: 0}
-  FlowerDudePrefab: {fileID: 0}
-  SpawnCD: 0
+  target: {fileID: 0}
+  explosionPrefab: {fileID: 1272043927337814, guid: 01e33749bb97a534cbe312402c5f3b50,
+    type: 2}
+  TargetCD: 3
+  updateTime: 0
+  moveSpeed: 10
+  targetOldPosition: {x: 0, y: 0, z: 0}
 --- !u!212 &212619946183943980
 SpriteRenderer:
   m_ObjectHideFlags: 1

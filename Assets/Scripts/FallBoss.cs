@@ -4,33 +4,47 @@ using UnityEngine;
 
 public class FallBoss : MonoBehaviour
 {
-    public Transform FlowerSpawn;
-    public GameObject FlowerDudePrefab;
-    public float SpawnCD;
-
+    public Transform MiniPumpkinSpawnRain;
+    public GameObject MiniPumpkinPrefab;
+    public Transform MiniPumpkinSpawnClose;
+    public float SpawnCDClose;
+    public float SpawnCDRain;
+    public GameObject target; //the enemy's target
+    public float moveSpeed = 1f; //move speed
+    private bool facingRight = true;
     private Rigidbody2D rb2d;
     private float SpawnTime;
 
     public void Start()
     {
         rb2d = GetComponent<Rigidbody2D>(); // obtain the enemies Physics Collider and Animation Controller
+        target = GameObject.FindGameObjectWithTag("Player");
+        SpawnCDClose = 3;
+        SpawnCDRain = 16;
+
     }
 
     void Update()
     {
-        
-       
+        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
     }
 
     private void FixedUpdate()
     {
         float currentTime = Time.realtimeSinceStartup;
-        if (SpawnTime + SpawnCD < currentTime)
+        if (SpawnTime + SpawnCDClose < currentTime)
         {
             SpawnTime = Time.realtimeSinceStartup;
-            GameObject FlowerDude = Instantiate(FlowerDudePrefab, FlowerSpawn.position, Quaternion.identity) as GameObject;
-            FlowerDude.GetComponent<Rigidbody2D>().velocity = new Vector2(-1.5f, 0);
+            GameObject MiniPumpkinClose = Instantiate(MiniPumpkinPrefab, MiniPumpkinSpawnClose.position, Quaternion.identity) as GameObject;
+            MiniPumpkinClose.GetComponent<Rigidbody2D>().velocity = new Vector2(1f, 0);
+        }
+        if (SpawnTime + SpawnCDRain < currentTime)
+        {
+            SpawnTime = Time.realtimeSinceStartup;
+            GameObject MiniPumpkinRain = Instantiate(MiniPumpkinPrefab, MiniPumpkinSpawnRain.position, Quaternion.identity) as GameObject;
+            MiniPumpkinRain.GetComponent<Rigidbody2D>().velocity = new Vector2(1f, 0);
         }
     }
+
 
 }
