@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Spring.unity
     guid: a4bd7b54a97dbc14bad65bcf077555ef
   - enabled: 1
-    path: Assets/Scenes/summer.unity
+    path: Assets/Scenes/Summer.unity
     guid: 7c7bdaff6743ca344b0957b30b1fd722
   - enabled: 1
     path: Assets/Scenes/Fall.unity
@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Death Screen.unity
     guid: 0bda85fe58ce1014196920aede87acd5
+  - enabled: 1
+    path: Assets/Scenes/End Game.unity
+    guid: d349f93c1df81e142a23b588da8269ce
   m_configObjects: {}
