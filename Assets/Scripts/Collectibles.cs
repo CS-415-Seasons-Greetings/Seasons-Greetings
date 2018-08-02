@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Collectibles : MonoBehaviour {
 
-    static int Score;
+    public static int Score;
 
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -16,3 +16,4 @@ public class Collectibles : MonoBehaviour {
         }
     }
 }
+

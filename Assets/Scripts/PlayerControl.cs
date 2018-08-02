@@ -30,6 +30,7 @@ public class PlayerControl : MonoBehaviour {
     private Vector2 hideHitBox = new Vector2(1000f, -1000f);
     private bool canDoubleJump; // determines if the player can double jump
     private bool doubleJump; // determines if the player has second jump available
+    private Vector2 touchOrigin = -Vector2.one;
     
 
     // Use this for initialization
@@ -47,6 +48,8 @@ public class PlayerControl : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+//#if UNITY_STANDALONE || UNITY_WEBPLAYER
+
         // ground detection works when the ground tranform object attached to the player is stuck in an object in the ground layer
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
         if (grounded)
@@ -92,6 +95,38 @@ public class PlayerControl : MonoBehaviour {
         {
             Time.timeScale = 2.0f;
         }
+        if(Input.GetKey("o"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+/* #else
+        int horizontal = 0;     //Used to store the horizontal move direction.
+        int vertical = 0;       //Used to store the vertical move direction.
+
+        if (Input.touchCount > 0)
+        {
+            Touch myTouch = Input.touches[0];
+            if (myTouch.phase == TouchPhase.Began)
+            {
+                touchOrigin = myTouch.position;
+            }
+            else if(myTouch.phase == TouchPhase.Ended && touchOrigin.x >= 0)
+            {
+                Vector2 touchEnd = myTouch.position;
+                float x = touchEnd.x - touchOrigin.x;
+                float y = touchEnd.y - touchOrigin.y;
+                touchOrigin.x = -1;
+                if (Mathf.Abs(x) > Mathf.Abs(y))
+                {
+                    horizontal = x > 0 ? 1 : -1;
+                }
+                //else
+                //{
+                 //   vertical = 
+                //}
+            }
+        }*/
     } 
 
     /**
