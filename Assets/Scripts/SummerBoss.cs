@@ -39,10 +39,10 @@ public class SummerBoss : MonoBehaviour {
         jumpMin = 20000;
         jumpMax = 40000;
 
-        float currentTime = Time.realtimeSinceStartup;
+        float currentTime = Time.time;
         if (jumpTime + jumpCD < currentTime)
         {
-            jumpTime = Time.realtimeSinceStartup; // put jump on cooldown
+            jumpTime = Time.time; // put jump on cooldown
             if (grounded)
             {
                 rb2d.AddForce(new Vector2(0f, Random.Range(jumpMin, jumpMax))); // add jump force to the sprite
@@ -51,7 +51,7 @@ public class SummerBoss : MonoBehaviour {
 
         if (fireballTime + fireCD < currentTime)
         {
-            fireballTime = Time.realtimeSinceStartup;
+            fireballTime = Time.time;
             anim.Play("Attack"); // play the attack animation
             PlayFireballSound(); // play fireball sound
             // make boss shoot fireball here

@@ -18,7 +18,7 @@ public class ScoreUpdater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        displayScore = Collectibles.Score;
+        displayScore = Collectibles.finalScore + Collectibles.currentScore;
         scoreText.text = "Collectibles: " + displayScore + "/44";
     }
 }

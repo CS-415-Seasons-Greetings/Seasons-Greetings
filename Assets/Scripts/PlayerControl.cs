@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour {
     public float moveForce;
     public float maxSpeed;
     public float jumpForce;
+    public int jumpCount;
     //public float fallMultiplier;
     //public float lowJumpMultipier;
     //public float jumpTime;// holds how long jump was pressed
@@ -29,9 +30,9 @@ public class PlayerControl : MonoBehaviour {
     private Vector2 hitboxCoords = new Vector2(0.1f, 0.1f);
     private Vector2 hideHitBox = new Vector2(1000f, -1000f);
     private bool canDoubleJump; // determines if the player can double jump
-    private bool doubleJump; // determines if the player has second jump available
+    private bool doubleJump;
     private Vector2 touchOrigin = -Vector2.one;
-    
+
 
     // Use this for initialization
     void Start()
@@ -41,30 +42,42 @@ public class PlayerControl : MonoBehaviour {
         if (SceneManager.GetActiveScene().name.Equals("Winter"))
         {
             canDoubleJump = true;
-            doubleJump = true;
+            jumpCount = 0;
+        }
+        else
+        {
+            jumpCount = 1;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-//#if UNITY_STANDALONE || UNITY_WEBPLAYER
+        //#if UNITY_STANDALONE || UNITY_WEBPLAYER
 
         // ground detection works when the ground tranform object attached to the player is stuck in an object in the ground layer
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-        if (grounded)
-        {
-            doubleJump = true;
-        }
 
-        if (Input.GetKey("space") && grounded)
+        if (Input.GetKeyDown("space"))
         {
             jump = true; // jump if the jump button is pressed and the character isn't grounded
-        }
-        if (Input.GetKey("space") && canDoubleJump && doubleJump && !grounded)
-        {
-            jump = true; // allow for double jump
-            doubleJump = false;
+            if (jumpCount < 2 && grounded)
+            {
+                PlayJumpSound();
+                rb2d.AddRelativeForce(new Vector2(0, jumpForce));
+                doubleJump = true;
+
+            }
+            else
+            {
+                if (doubleJump == true && Input.GetKeyDown(KeyCode.Space))
+                {
+                    PlayJumpSound();
+                    rb2d.AddRelativeForce(new Vector2(0, 150f));
+                    doubleJump = false;
+
+                }
+            }
         }
 
         if (Input.GetKey("p")) //Pause
@@ -91,43 +104,17 @@ public class PlayerControl : MonoBehaviour {
         {
             Time.timeScale = 1.0f;
         }
-        if(Input.GetKey("y"))
+        if (Input.GetKey("y"))
         {
             Time.timeScale = 2.0f;
         }
-        if(Input.GetKey("o"))
+        if (Input.GetKey("o"))
         {
+            Collectibles.currentScore = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-/* #else
-        int horizontal = 0;     //Used to store the horizontal move direction.
-        int vertical = 0;       //Used to store the vertical move direction.
-
-        if (Input.touchCount > 0)
-        {
-            Touch myTouch = Input.touches[0];
-            if (myTouch.phase == TouchPhase.Began)
-            {
-                touchOrigin = myTouch.position;
-            }
-            else if(myTouch.phase == TouchPhase.Ended && touchOrigin.x >= 0)
-            {
-                Vector2 touchEnd = myTouch.position;
-                float x = touchEnd.x - touchOrigin.x;
-                float y = touchEnd.y - touchOrigin.y;
-                touchOrigin.x = -1;
-                if (Mathf.Abs(x) > Mathf.Abs(y))
-                {
-                    horizontal = x > 0 ? 1 : -1;
-                }
-                //else
-                //{
-                 //   vertical = 
-                //}
-            }
-        }*/
-    } 
+    }
 
     /**
      * Controls Physics Updates
@@ -162,7 +149,7 @@ public class PlayerControl : MonoBehaviour {
                 attackHitbox.offset = hitboxCoords;
 
             }
-            
+
         }
 
         if (h * rb2d.velocity.x < maxSpeed)
@@ -183,28 +170,39 @@ public class PlayerControl : MonoBehaviour {
         {
             Flip();
         }
-        if (jump)
+        /*if (jump)
         {
-            PlayJumpSound();
-            //anim.SetTrigger("Jump");
-            rb2d.AddForce(new Vector2(0f, jumpForce)); // add jump force to the sprite
-            //rb2d.velocity = Vector2.up * jumpForce * (jumpExtra * 20);
-            
-            
-            /*if (rb2d.velocity.y < 0.0)  //my attempt to make holding spacebar go higher.
+            Debug.Log("jump call: " + jump);
+            if (grounded)
             {
-                //the one is for the phyics's engine normal gravity. We counteract it so our multiplier is what we want.
-                rb2d.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+                Debug.Log("grounded is true call");
+                PlayJumpSound();
+                rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
+                rb2d.AddForce(new Vector2(0, jumpForce));
+                doubleJump = true;
             }
-            else if(rb2d.velocity.y > 0.0 && !jumpKeyPress)
+            Debug.Log("else call: ");
+            if (doubleJump && canDoubleJump)
             {
-                rb2d.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultipier - 1) * Time.fixedDeltaTime;
-            }*/
-            
+                Debug.Log("doublejump call");
+                doubleJump = false;
+                if (Input.GetKeyDown(KeyCode.Space)) 
+                   {
+                    rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
+                    rb2d.AddForce(new Vector2(0, jumpForce));
+                }
+                
+            }
+            Debug.Log("jump false");
             jump = false;
-         
-        }
+        }*/
+
+
+        
     }
+    
+
+    
 
     void PlayJumpSound()
     {
@@ -221,4 +219,24 @@ public class PlayerControl : MonoBehaviour {
         transform.localScale = theScale;
     }
 
+    void Jump()
+    {
+        if (grounded && jumpCount < 2)
+        {
+            PlayJumpSound();
+            rb2d.AddRelativeForce(new Vector2(0, jumpForce));
+            doubleJump = true;
+
+        }
+        else
+        {
+            if (doubleJump == true && Input.GetKeyDown(KeyCode.Space))
+            {
+                PlayJumpSound();
+                rb2d.AddRelativeForce(new Vector2(0, jumpForce));
+                doubleJump = false;
+
+            }
+        }
+    }
 }

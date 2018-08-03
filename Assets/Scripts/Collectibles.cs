@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Collectibles : MonoBehaviour {
 
-    public static int Score;
+    public static int finalScore;
+    public static int currentScore;
 
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            Score++;
+            currentScore++;
             Destroy(gameObject);
         }
     }

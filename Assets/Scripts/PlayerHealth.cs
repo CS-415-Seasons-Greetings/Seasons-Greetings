@@ -30,6 +30,7 @@ public class PlayerHealth : MonoBehaviour {
     {
         if (gameObject.transform.position.y < -15)
         {
+            Collectibles.currentScore = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
@@ -37,6 +38,7 @@ public class PlayerHealth : MonoBehaviour {
     void Die()
     {
         hasDied = true;
+        Collectibles.currentScore = 0;
         SceneManager.LoadScene("Death Screen");
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // reloads the current scene when the player dies
     }

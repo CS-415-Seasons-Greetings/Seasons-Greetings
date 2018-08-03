@@ -31,16 +31,16 @@ public class FallBoss : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float currentTime = Time.realtimeSinceStartup;
+        float currentTime = Time.time;
         if (SpawnTime + SpawnCDClose < currentTime)
         {
-            SpawnTime = Time.realtimeSinceStartup;
+            SpawnTime = Time.time;
             GameObject MiniPumpkinClose = Instantiate(MiniPumpkinPrefab, MiniPumpkinSpawnClose.position, Quaternion.identity) as GameObject;
             MiniPumpkinClose.GetComponent<Rigidbody2D>().velocity = new Vector2(1f, 0);
         }
         if (SpawnTime + SpawnCDRain < currentTime)
         {
-            SpawnTime = Time.realtimeSinceStartup;
+            SpawnTime = Time.time;
             GameObject MiniPumpkinRain = Instantiate(MiniPumpkinPrefab, MiniPumpkinSpawnRain.position, Quaternion.identity) as GameObject;
             MiniPumpkinRain.GetComponent<Rigidbody2D>().velocity = new Vector2(1f, 0);
         }

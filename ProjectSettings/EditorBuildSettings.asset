@@ -27,9 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Winter.unity
     guid: ded53da12a420da42b7a0f80ed03b02c
   - enabled: 1
-    path: Assets/Scenes/Death Screen.unity
-    guid: 0bda85fe58ce1014196920aede87acd5
-  - enabled: 1
     path: Assets/Scenes/End Game.unity
     guid: d349f93c1df81e142a23b588da8269ce
+  - enabled: 1
+    path: Assets/Scenes/Death Screen.unity
+    guid: 0bda85fe58ce1014196920aede87acd5
   m_configObjects: {}

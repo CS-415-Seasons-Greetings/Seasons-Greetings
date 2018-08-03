@@ -22,6 +22,7 @@ public class SceneLoader : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Collectibles.finalScore = Collectibles.currentScore;
             ChangeScene();
         }
     }

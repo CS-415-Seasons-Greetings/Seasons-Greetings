@@ -30,7 +30,7 @@ public class FallBossSpawns : MonoBehaviour {
     void Update()
     {
         collided = Physics2D.OverlapCircle(transform.position, collisionRadius, groundLayer);
-        float currentTime = Time.realtimeSinceStartup;
+        float currentTime = Time.time;
         transform.position = Vector2.MoveTowards(transform.position, targetOldPosition, moveSpeed * Time.deltaTime);
         if(transform.position.Equals(targetOldPosition) || collided || transform.position.x < 110)
         {
@@ -40,7 +40,7 @@ public class FallBossSpawns : MonoBehaviour {
         }
         if (TargetCD + updateTime < currentTime)
         {
-            updateTime = Time.realtimeSinceStartup;
+            updateTime = Time.time;
             targetOldPosition = target.transform.position;
 
         }
