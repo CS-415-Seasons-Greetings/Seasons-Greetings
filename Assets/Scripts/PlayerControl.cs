@@ -70,7 +70,7 @@ public class PlayerControl : MonoBehaviour {
             }
             else
             {
-                if (doubleJump == true && Input.GetKeyDown(KeyCode.Space))
+                if (doubleJump == true && Input.GetKeyDown(KeyCode.Space) && canDoubleJump)
                 {
                     PlayJumpSound();
                     rb2d.AddRelativeForce(new Vector2(0, 150f));

@@ -29,7 +29,11 @@ public class WinterBoss : MonoBehaviour
         if (inAttackRange)
         {
             //transform.position = Vector2.MoveTowards(transform.position, targetOldPosition, moveSpeed * Time.deltaTime);
-            transform.position = Vector2.Lerp(transform.position, targetOldPosition, .01f);
+            if(target.transform.position.x >= 179)
+            {
+                transform.position = Vector2.Lerp(transform.position, targetOldPosition, .01f);
+            }
+
             if (chargeTime + attackCD < currentTime)
             {
                 chargeTime = Time.realtimeSinceStartup; // put charge on cooldown
